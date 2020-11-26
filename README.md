@@ -116,4 +116,4 @@ class PoemClassifier(nn.Module):
         return (h, c)
 ```
 
-更多具体代码信息请参考[https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb)
+更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb)
