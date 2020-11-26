@@ -1,4 +1,4 @@
-# Tasks of NLP Course in Nov 2020
+# Tasks of NLP Course in Autumn 2020
 
 - [朴素贝叶斯和文本分类](##朴素贝叶斯和文本分类)
 ## 朴素贝叶斯和文本分类
