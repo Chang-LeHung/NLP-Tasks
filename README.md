@@ -68,11 +68,11 @@ class MyDataset(Dataset):
     def __len__(self):
         return len(self.labels)
 ```
-构建网络模型，本次分类使用 `LSTM` 模型，实验过程中比较需要注意的就是数据在网络过程中传递的时候，`shape` 的变化, 代码中 `batch_first=True`，具体的 `shape` 变化如下：
-`input` : `batch_size, seqence_length`
-`after embedding` : `batch_size, seqence_length, embedding_size`
-`after LSTM` : `batch_size, seqence_length, hidden_size`
-`return` : `batch_szie, 1, hidden_size ` == `batch_szie, hidden_size `
+构建网络模型，本次分类使用 `LSTM` 模型，实验过程中比较需要注意的就是数据在网络过程中传递的时候，`shape` 的变化, 代码中 `batch_first=True`，具体的 `shape` 变化如下：\\
+`input` : `batch_size, seqence_length`\\
+`after embedding` : `batch_size, seqence_length, embedding_size`\\
+`after LSTM` : `batch_size, seqence_length, hidden_size`\\
+`return` : `batch_szie, 1, hidden_size ` == `batch_szie, hidden_size `\\
 因为我们只需要返回最后一个节点的输出，用这个输出来做分类即可，因为这个节点的信息是由前面所有节点得来的，所以 `reuturn` 的结果 `shape` 是 `batch_szie, 1, hidden_size `
 
 ```python
