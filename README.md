@@ -53,4 +53,55 @@ final_dataset = torch.cat((dufu, sushi), dim=0)
 
 final_label = final_label.type(torch.LongTensor)
 ```
+构建数据集，重写`Dataset`里面的__len__，__getitem__函数方便后面数据及的构造
+```python
+class MyDataset(Dataset):
+    
+    def __init__(self, dataset, label):
+        
+        self.datasets = dataset
+        self.labels = label
+
+    def __getitem__(self, idx):
+        return self.datasets[idx], self.labels[idx]
+
+    def __len__(self):
+        return len(self.labels)
+```
+构建网络模型，本次分类使用 `LSTM` 模型
+```python
+class PoemClassifier(nn.Module):
+    
+    def __init__(self, words_num, embedding_size, hidden_size, classes, num_layers,
+                    batch_size, sequence_length):
+        super(PoemClassifier, self).__init__()
+        self.num_layers = num_layers
+        self.batch_size = batch_size
+        self.hidden_size = hidden_size
+        self.words_num = words_num
+        self.sequence_length = sequence_length
+        self.emb = nn.Embedding(words_num, embedding_size)
+        self.LSTM = nn.LSTM(embedding_size, hidden_size, num_layers, batch_first=True)
+        self.fc1 = nn.Linear(hidden_size, classes)
+        self.softmax = nn.Softmax(dim=1)
+
+    def forward(self, x, hidden=None):
+        batch_size, sequence_length = x.shape # x batch_size, sequence_length
+        if hidden is None:
+            h, c = self.init_hidden(x, batch_size)
+        else:
+            h. c = hidden
+        out = self.emb(x) # batch_size, sequence_length, embedding_size
+        out, hidden = self.LSTM(out, (h, c)) # batch_size, sequence_length, hidden_size
+        out = out[:, -1, :]# batch_size, last sequence, hidden_size
+        out = self.fc1(out)
+        return out, hidden
+
+    def init_hidden(self, ipt, batch_size):
+        h = ipt.data.new(self.num_layers, batch_size, self.hidden_size).fill_(0).float()
+        c = ipt.data.new(self.num_layers, batch_size, self.hidden_size).fill_(0).float()
+        h = Variable(h)
+        c = Variable(c)
+        return (h, c)
+```
 更多具体信息请参考[https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb)
