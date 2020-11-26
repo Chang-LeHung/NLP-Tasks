@@ -1,7 +1,7 @@
 # Tasks of NLP Course in Autumn 2020
 
-- [朴素贝叶斯和文本分类](# 朴素贝叶斯和文本分类)
-- [Conditional Random Filed](# conditional Random Filed)
+- [朴素贝叶斯和文本分类](#朴素贝叶斯和文本分类)
+- [Conditional Random Filed](#conditional random filed)
 - [Word2Vec & Embedding](# cord2Vec & Embedding)
 ## 朴素贝叶斯和文本分类
 ### Introduction to dataset
