@@ -51,3 +51,4 @@ final_dataset = torch.cat((dufu, sushi), dim=0)
 
 final_label = final_label.type(torch.LongTensor)
 ```
+更多具体信息请参考[https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb)
