@@ -19,6 +19,24 @@ sushi = dataset.item()["sushi"]
 word2idx = datasets["word2idx"]
 idx2word = datasets["idx2word"]
 ```
+`my_mapping` 可以将一个数据数组变成相应的诗词
+```python
+my_mapping[dataset.item()["sushi"]]
+array([['<START>', '<START>', '<START>', ..., '去', '。', '<END>'],
+       ['<START>', '<START>', '<START>', ..., '思', '。', '<END>'],
+       ['<START>', '<START>', '<START>', ..., '工', '。', '<END>'],
+       ...,
+       ['<START>', '<START>', '<START>', ..., '谗', '。', '<END>'],
+       ['<START>', '<START>', '<START>', ..., '夸', '。', '<END>'],
+       ['<START>', '<START>', '<START>', ..., '章', '。', '<END>']],
+      dtype='<U7')
+```
+```python
+my_mapping[dataset.item()["sushi"][100]][-26:] # 将苏轼的第一首诗拿出来， <START>前面都是<START>作为填充使用
+array(['<START>', '雨', '细', '方', '梅', '夏', '，', '风', '高', '已', '麦', '秋',
+       '。', '应', '怜', '百', '花', '尽', '，', '绿', '叶', '暗', '红', '榴', '。',
+       '<END>'], dtype='<U7')
+```
 `杜甫`的诗词一共1150首
 ```python
 dataset.item()["dufu"]
