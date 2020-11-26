@@ -38,3 +38,16 @@ array([[   0,    0,    0, ..., 2456, 3507, 4682],
        [   0,    0,    0, ...,  216, 3507, 4682],
        [   0,    0,    0, ..., 4316, 3507, 4682]])
 ```
+构造`label`，并将其变成tensor类型数据
+```python
+dufu = torch.from_numpy(dataset.item()["dufu"])
+sushi = torch.from_numpy(dataset.item()["sushi"])
+
+label_dufu = torch.full((len(dufu), ), fill_value=0)
+label_sushi = torch.full((len(sushi), ), fill_value=1)
+
+final_label = torch.cat((label_dufu, label_sushi), dim=0)
+final_dataset = torch.cat((dufu, sushi), dim=0)
+
+final_label = final_label.type(torch.LongTensor)
+```
