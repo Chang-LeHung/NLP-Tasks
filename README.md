@@ -1,7 +1,7 @@
 # Tasks of NLP Course in Autumn 2020
 
 - [朴素贝叶斯和文本分类](#朴素贝叶斯和文本分类)
-- [条件随机场](#条件随机场)
+- [LSTM for Sequence Labeling](#LSTM-for-Sequence-Labeling)
 - [词嵌入](#词嵌入)
 ## 朴素贝叶斯和文本分类
 ### Introduction to dataset
@@ -146,5 +146,5 @@ class PoemClassifier(nn.Module):
 
 更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb)
 
-## 条件随机场
+## LSTM for Sequence Labeling
 ## 词嵌入
