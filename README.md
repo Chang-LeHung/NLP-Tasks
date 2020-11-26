@@ -73,6 +73,12 @@ final_dataset = torch.cat((dufu, sushi), dim=0)
 
 final_label = final_label.type(torch.LongTensor)
 ```
+分割测试集和训练集，训练集的比例是0.9
+```python
+dataset_train, dataset_test, label_train, label_test = train_test_split(final_dataset,
+                                                            final_label, test_size=0.1,
+                                                                       random_state=1)
+```
 构建数据集，重写`Dataset`里面的`__len__`，`__getitem__`函数方便后数据集的构造
 ```python
 class MyDataset(Dataset):
