@@ -2,7 +2,9 @@
 Tasks of NLP Course in Nov.2020
 ## 朴素贝叶斯和文本分类
 ### Introduction to dataset
-实验中使用的数据集是`苏轼`和`杜甫`的诗词，具体内容查看[https://github.com/Chang-LeHung/NLP-Tasks/tree/main/datasets/poems](https://github.com/Chang-LeHung/NLP-Tasks/tree/main/datasets/poems)中的dufu.json和sushi.json
+实验中使用的数据集是`苏轼`和`杜甫`的诗词，具体内容查看[https://github.com/Chang-LeHung/NLP-Tasks/tree/main/datasets/poems](https://github.com/Chang-LeHung/NLP-Tasks/tree/main/datasets/poems)中的dufu.json和sushi.json 这里面还有一些其他的数据，可以用来做多分类，比如分类多个诗人的诗词，分类写人、写景的诗词等等，实验为了方便
+和朴素贝叶斯进行对比，只进行了二分类。
+
 实验中使用的数据集已经提取出来了，是`final set.npz`中的数据，具体加载和提取数据方式如下
 
 ```python
