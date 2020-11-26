@@ -54,7 +54,7 @@ final_dataset = torch.cat((dufu, sushi), dim=0)
 
 final_label = final_label.type(torch.LongTensor)
 ```
-构建数据集，重写`Dataset`里面的__len__，__getitem__函数方便后数据集的构造
+构建数据集，重写`Dataset`里面的`__len__`，`__getitem__`函数方便后数据集的构造
 ```python
 class MyDataset(Dataset):
     
