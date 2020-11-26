@@ -6,13 +6,13 @@ Tasks of NLP Course in Nov.2020
 实验中使用的数据集已经提取出来了，是`final set.npz`中的数据，具体加载和提取数据方式如下
 
 ```python
+import numpy as np
 datasets = np.load("final set.npz")
 datasets.allow_pickle = True
 my_mapping = datasets["use_word2idx"]
 dataset = datasets["dataset"]
-
-dufu = torch.from_numpy(dataset.item()["dufu"])
-sushi = torch.from_numpy(dataset.item()["sushi"])
+dufu = dataset.item()["dufu"]
+sushi = dataset.item()["sushi"]
 word2idx = datasets["word2idx"]
 idx2word = datasets["idx2word"]
 ```
