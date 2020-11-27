@@ -106,7 +106,7 @@ class MyDataset(Dataset):
 
 `return` : `batch_szie`, `1`, `hidden_size` == `batch_szie`, `hidden_size `
 
-因为我们只需要返回最后一个节点的输出，用这个输出来做分类即可，因为这个节点的信息是由前面所有节点得来的，所以 `reuturn` 的结果 `shape` 是 `batch_szie`, `1`, `hidden_size `
+因为我们只需要返回最后一个节点的输出，用这个输出来做分类即可，因为这个节点的信息是由前面所有节点得来的，它包含前面所有的信息，所以 `reuturn` 的结果 `shape` 是 `batch_szie`, `1`, `hidden_size `
 
 ```python
 class PoemClassifier(nn.Module):
