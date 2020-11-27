@@ -144,7 +144,8 @@ class PoemClassifier(nn.Module):
         return (h, c)
 ```
 
-更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
+更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) 
+预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
 
 ## LSTM for Sequence Labeling
 ## Word2vec-Embedding
