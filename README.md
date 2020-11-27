@@ -1,6 +1,6 @@
 # Tasks of NLP Course in Autumn 2020
 
-* [Naive Bayes & Text Classification](#Naive Bayes & Text Classification)
+* [Naive Bayes & Text Classification](#Naive-Bayes & Text-Classification)
 * [LSTM for Sequence Labeling](#LSTM-for-Sequence-Labeling)
 * [Word2vec & Embedding](#Word2vec-Embedding)
 ## Naive Bayes & Text Classification
