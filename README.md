@@ -21,7 +21,7 @@ sushi = dataset.item()["sushi"]
 word2idx = datasets["word2idx"]
 idx2word = datasets["idx2word"]
 ```
-`my_mapping` 可以将一个数据数组变成相应的诗词
+`my_mapping` 可以将一个数据数组变成相应的诗词，<START>和<END>分别作为诗词的开始和结束。
 ```python
 my_mapping[dataset.item()["sushi"]]
 array([['<START>', '<START>', '<START>', ..., '去', '。', '<END>'],
