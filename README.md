@@ -62,6 +62,8 @@ array([[   0,    0,    0, ..., 2456, 3507, 4682],
        [   0,    0,    0, ...,  216, 3507, 4682],
        [   0,    0,    0, ..., 4316, 3507, 4682]])
 ```
+### LSTM 
+        
 构造`label`，并将其变成tensor类型数据
 ```python
 dufu = torch.from_numpy(dataset.item()["dufu"])
