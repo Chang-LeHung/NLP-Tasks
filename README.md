@@ -144,7 +144,7 @@ class PoemClassifier(nn.Module):
 ```
 模型训练结果如下如所示:
 
-<img src="/images/sof.png" width = "500"  alt="softmax" align=center />
+<img src="/images/sof.png" width = "800"  alt="softmax" align=center />
 
 更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) 
 预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
