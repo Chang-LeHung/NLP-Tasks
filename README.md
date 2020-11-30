@@ -130,7 +130,7 @@ class PoemClassifier(nn.Module):
         if hidden is None:
             h, c = self.init_hidden(x, batch_size)
         else:
-            h. c = hidden
+            h, c = hidden
         out = self.emb(x) # batch_size, sequence_length, embedding_size
         out, hidden = self.LSTM(out, (h, c)) # batch_size, sequence_length, hidden_size
         out = out[:, -1, :]# batch_size, last sequence, hidden_size
