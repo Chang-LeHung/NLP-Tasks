@@ -122,7 +122,6 @@ class PoemClassifier(nn.Module):
         self.emb = nn.Embedding(words_num, embedding_size)
         self.LSTM = nn.LSTM(embedding_size, hidden_size, num_layers, batch_first=True)
         self.fc1 = nn.Linear(hidden_size, classes)
-        self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x, hidden=None):
         batch_size, sequence_length = x.shape # x batch_size, sequence_length
@@ -143,7 +142,8 @@ class PoemClassifier(nn.Module):
         c = Variable(c)
         return (h, c)
 ```
-
+模型训练结果如下如所示:
+[sof.png](./images/sof.png)
 更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) 
 预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
 
