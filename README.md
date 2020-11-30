@@ -62,6 +62,8 @@ array([[   0,    0,    0, ..., 2456, 3507, 4682],
        [   0,    0,    0, ...,  216, 3507, 4682],
        [   0,    0,    0, ..., 4316, 3507, 4682]])
 ```
+### Classify with LSTM 
+        
 构造`label`，并将其变成tensor类型数据
 ```python
 dufu = torch.from_numpy(dataset.item()["dufu"])
@@ -128,7 +130,7 @@ class PoemClassifier(nn.Module):
         if hidden is None:
             h, c = self.init_hidden(x, batch_size)
         else:
-            h. c = hidden
+            h, c = hidden
         out = self.emb(x) # batch_size, sequence_length, embedding_size
         out, hidden = self.LSTM(out, (h, c)) # batch_size, sequence_length, hidden_size
         out = out[:, -1, :]# batch_size, last sequence, hidden_size
@@ -143,7 +145,15 @@ class PoemClassifier(nn.Module):
         return (h, c)
 ```
 模型训练结果如下如所示:
-[sof.png](/images/sof.png)
+
+`Softmax + CrossEntropy` on testset
+
+<img src="/images/sof.png" width = "800"  alt="softmax" align=center />
+
+`Sigmoid + Binary Cross Entropy` on testset
+
+<img src="/images/sig.png" width = "800"  alt="softmax" align=center />
+
 更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) 
 预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
 
