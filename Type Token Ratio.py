@@ -2,17 +2,7 @@ import re
 import plotly.graph_objs as go
 import random
 
-#12311321321
-class TTRCompare(object):
-    """
-    Usage Example:
-    ```
-    ttrs_obj = TTRCompare("Pubmed.txt", "Brow Corpus.txt", repeat=15)
-    ttrs_obj.shape()
-    ttrs_obj.visual()
-    ttrs_obj.ttrs_detail()
-    ```
-    """
+
     def __init__(self, path1, path2, repeat=1, encoding="utf-8", max_words_num=40000):
         self._path1 = path1
         self._path2 = path2
