@@ -144,11 +144,11 @@ class PoemClassifier(nn.Module):
 ```
 模型训练结果如下如所示:
 
-`Softmax + CrossEntropy`
+`Softmax + CrossEntropy` on testset
 
 <img src="/images/sof.png" width = "800"  alt="softmax" align=center />
 
-`Sigmoid + Binary Cross Entropy`
+`Sigmoid + Binary Cross Entropy` on testset
 
 <img src="/images/sig.png" width = "800"  alt="softmax" align=center />
 
