@@ -148,11 +148,11 @@ class PoemClassifier(nn.Module):
 
 `Softmax + CrossEntropy` on testset
 
-<img src="/images/sof.png" width = "800"  alt="softmax" align=center />
+<img src="/images/sof.png" width = "800"  alt="Softmax" align=center />
 
 `Sigmoid + Binary Cross Entropy` on testset
 
-<img src="/images/sig.png" width = "800"  alt="softmax" align=center />
+<img src="/images/sig.png" width = "800"  alt="Sigmoid" align=center />
 
 更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) 
 预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
