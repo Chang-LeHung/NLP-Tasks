@@ -161,3 +161,6 @@ class PoemClassifier(nn.Module):
 ## LSTM for Sequence Labeling
 实验中所用的数据集太大不能传送到github，如有需要请访问[https://gitee.com/Chang-LeHung/NLP-Tasks](https://gitee.com/Chang-LeHung/NLP-Tasks)
 ## Word2vec-Embedding
+目前实现词嵌入主要有两种主流的模型分别是：SkipGram模型和CBOW模型，。两种模型很相似，相当于是一种对称模型。其主要结构如下所示：
+
+[skipgram](/images/skipgram.png)
