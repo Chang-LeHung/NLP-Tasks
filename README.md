@@ -243,4 +243,33 @@ class CBOW(nn.Module):
         out = self.linear(out)
         return self.logosoftmax(out)
 ```
-其实模型组件还是比较简单的，只需要简单修改一下数据的维度即可。之前SkipGram模型是一个词对应一个词，现在是一组词对应一个词。假如原始的输入维度为(batch size, context length)，经过embedding层之后的维度变成，(batchm size, context length, embedding size)，所以在经过全连接层之前需要进行Reshape过程，在经过$Reshape$过程之后的维度变成(batch size, context length * embedding size)，再将这个数据经过全连接层即可，注意：logosoftmax + NLLoss = sotfmax + crossentropy。
+其实模型组件还是比较简单的，只需要简单修改一下数据的维度即可。之前SkipGram模型是一个词对应一个词，现在是一组词对应一个词。假如原始的输入维度为(batch size, context length)，经过embedding层之后的维度变成，(batchm size, context length, embedding size)，所以在经过全连接层之前需要进行Reshape过程，在经过Reshape过程之后的维度变成(batch size, context length * embedding size)，再将这个数据经过全连接层即可，注意：logosoftmax + NLLoss = sotfmax + crossentropy。
+
+### 训练
+```python
+model = CBOW(256, vocab_size, 8)
+lr = 8e-4
+epoch = 40
+device = torch.device("cuda") if torch.cuda.is_available() else torch.device("cpu")
+criteiron = nn.NLLLoss()
+optimizer = optim.Adam(model.parameters(), lr=lr)
+losses = []
+model = model.to(device)
+for e in range(epoch):
+    temp_losses = []
+    for idx, data in enumerate(data_loader):
+        data, label = data
+        data = data.to(device)
+        label = label.to(device)
+        out = model(data)
+        loss = criteiron(out, label)
+        optimizer.zero_grad()
+        loss.backward()
+        optimizer.step()
+        temp_losses.append(loss.item())
+        print(f"Epoch [{e + 1}/{epoch}] Step [{idx + 1}/{len(data_loader)}] loss = {loss.item()}")
+    losses.append(np.mean(temp_losses))
+    sns.lineplot(x = np.arange(len(temp_losses)), y = temp_losses)
+    plt.show()
+    plt.pause(0.005)
+```
