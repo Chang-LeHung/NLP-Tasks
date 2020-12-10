@@ -273,3 +273,14 @@ for e in range(epoch):
     plt.show()
     plt.pause(0.005)
 ```
+训练过程loss如下：
+
+<img src="/images/loss.png" width = "800"  alt="Softmax" align=center />
+
+从训练过程可以看出来，最终的损失几乎为0，从训练结果来看还是非常好的，也就是说给定上下文他可以很确定的预测中心词是什么。
+
+下面给出在哈利波特文本数据中训练的SkpipGram和CBOW模型表现的结果
+
+<img src="/images/cot.png" width = "800"  alt="Softmax" align=center />
+
+
