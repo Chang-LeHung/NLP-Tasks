@@ -158,4 +158,5 @@ class PoemClassifier(nn.Module):
 预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
 
 ## LSTM for Sequence Labeling
+实验中所用的数据集太大不能传送到github，如有需要请访问[https://gitee.com/Chang-LeHung/NLP-Tasks](https://gitee.com/Chang-LeHung/NLP-Tasks)
 ## Word2vec-Embedding
