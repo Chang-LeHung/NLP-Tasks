@@ -166,3 +166,58 @@ class PoemClassifier(nn.Module):
 <img src="/images/skipgram.png" width = "800"  alt="Softmax" align=center />
 
 <img src="/images/cbow.png" width = "800"  alt="Softmax" align=center />
+
+上述两种模型只需要具体实现一个模型即可，另外一个模型很容易就能理解和实现了，下面主要介绍CBOW模型。
+### 数据集准备
+CBOW模型主要是通过上下文预测中心词，因此在采集数据的时候根据中心词来采集，通过设置窗口大小来决定上下文的范围。比如 "I like natural language processing very much"，如果中心词为
+"language",上下文窗口为2，那么它的范围就是"like natural language processing very"，从这中间采集上下文，切中心词左右采集的单词数目要一致。具体实现如下：
+```python
+def dataset_extractor(article, left_window=8, right_window=8, num_words_selected=8):
+    '''
+    article : 文章对应的数字列表
+    num_words_selected : 每个中心词需要抽取多少个对应的上下文单词
+    left_window : 中心词左边带抽取单词的范围
+    right_window : 中心词右边边带抽取单词的范围
+    '''
+    length = len(article)
+    dataset = []
+    labels = []
+    for idx, word_num in enumerate(article[1:-1]):
+        idx = idx + 1
+        if idx <= left_window:
+            temp = np.array([idx - 1, idx + 1])
+            num_idx = list(np.arange(0, idx - 1)) + list(temp) + list(np.arange(idx + 2, idx + 1 + right_window))
+        elif length - idx -1 <= right_window:
+            temp = np.array([idx - 1, idx + 1])
+            num_idx = list(np.arange(idx - left_window, idx - 1)) + list(temp) + list(np.arange(idx + 2, length))
+        else:
+            temp = np.array([idx - 1, idx + 1])
+            num_idx = list(np.arange(idx - left_window, idx - 1)) + list(temp) + list(np.arange(idx + 2, idx + 1 + right_window))
+        nums = article[num_idx]
+        if len(nums) > num_words_selected:
+            nums = np.random.choice(nums, size=num_words_selected, replace=False)
+        labels += [article[idx].tolist()]
+        dataset += nums.tolist()
+    return labels, dataset
+# 获取数据
+labels, dataset = dataset_extractor(article=num_article, left_window=8, right_window=8,
+                                               num_words_selected=8)
+dataset = torch.from_numpy(np.array(dataset))
+labels = torch.from_numpy(np.array(labels))
+# 构建数据模型
+class MyDataset(Dataset):
+    
+    def __init__(self, data, label):
+        super(MyDataset, self).__init__()
+        self.data = data
+        self.label = label
+        
+    def __len__(self):
+        return len(self.data)
+    
+    def __getitem__(self, idx):
+        return self.data[idx], self.label[idx]
+# 得到训练迭代数据
+dataset = MyDataset(dataset, labels)
+data_loader = DataLoader(dataset, batch_size=16, shuffle=True, drop_last=True, num_workers=4)
+```
