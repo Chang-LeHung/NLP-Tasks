@@ -221,3 +221,26 @@ class MyDataset(Dataset):
 dataset = MyDataset(dataset, labels)
 data_loader = DataLoader(dataset, batch_size=16, shuffle=True, drop_last=True, num_workers=4)
 ```
+
+### 网络结构设计
+CBOW模型网络结构其实很简单，就是一个简单的三层前馈网络模型，输入通过词嵌入在通过全连接层再加上一层softmax即可。具体代码如下：
+```python
+class CBOW(nn.Module):
+    
+    def __init__(self, embedding_size, vocab_size, squence_length):
+        
+        super(CBOW, self).__init__()
+        self.embedding_size = embedding_size
+        self.vocab_size = vocab_size
+        self.squence_length = squence_length
+        self.embedding = nn.Embedding(vocab_size, embedding_size)
+        self.linear = nn.Linear(embedding_size * squence_length, vocab_size)
+        self.logosoftmax = nn.LogSoftmax(dim=1)
+   
+    def forward(self, x):
+        out = self.embedding(x)
+        out = out.view(-1, self.squence_length * self.embedding_size)
+        out = self.linear(out)
+        return self.logosoftmax(out)
+```
+其实模型组件还是比较简单的，只需要简单修改一下数据的维度即可。之前SkipGram模型是一个词对应一个词，现在是一组词对应一个词。假如原始的输入维度为(batch size, context length)，经过$embedding$层之后的维度变成，(batchm size, context length, embedding size)，所以在经过全连接层之前需要进行Reshape过程，在经过$Reshape$过程之后的维度变成(batch size, context length * embedding size)，再将这个数据经过全连接层即可，之后的损失函数也和之前SkipGram模型一致。
