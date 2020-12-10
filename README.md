@@ -243,4 +243,4 @@ class CBOW(nn.Module):
         out = self.linear(out)
         return self.logosoftmax(out)
 ```
-其实模型组件还是比较简单的，只需要简单修改一下数据的维度即可。之前SkipGram模型是一个词对应一个词，现在是一组词对应一个词。假如原始的输入维度为(batch size, context length)，经过$embedding$层之后的维度变成，(batchm size, context length, embedding size)，所以在经过全连接层之前需要进行Reshape过程，在经过$Reshape$过程之后的维度变成(batch size, context length * embedding size)，再将这个数据经过全连接层即可，之后的损失函数也和之前SkipGram模型一致。
+其实模型组件还是比较简单的，只需要简单修改一下数据的维度即可。之前SkipGram模型是一个词对应一个词，现在是一组词对应一个词。假如原始的输入维度为(batch size, context length)，经过embedding层之后的维度变成，(batchm size, context length, embedding size)，所以在经过全连接层之前需要进行Reshape过程，在经过$Reshape$过程之后的维度变成(batch size, context length * embedding size)，再将这个数据经过全连接层即可，注意：logosoftmax + NLLoss = sotfmax + crossentropy。
