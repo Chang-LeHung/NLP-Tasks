@@ -157,6 +157,7 @@ class PoemClassifier(nn.Module):
 更多具体代码信息请参考[LSTM for text classification](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/Big%20TaskI.ipynb) 
 预训练模型 [pretrained model](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/PoemClassify.pth)
 
+关于朴素贝叶斯的工程实现比较简单，具体的代码可参考：[https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/NaiveBayes.ipynb](https://github.com/Chang-LeHung/NLP-Tasks/blob/main/Text%20Classification/NaiveBayes.ipynb)
 ## LSTM for Sequence Labeling
 实验中所用的数据集太大不能传送到github，如有需要请访问[https://gitee.com/Chang-LeHung/NLP-Tasks](https://gitee.com/Chang-LeHung/NLP-Tasks)
 ## Word2vec-Embedding
